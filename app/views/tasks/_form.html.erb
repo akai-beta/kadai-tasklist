@@ -1,0 +1,26 @@
+<%= form_for(task) do |t| %>
+
+<% if task.errors.any? %>
+
+<div id="error_explanation">
+  <ul>
+    <% task.errors.full_messages.each do |error| %>
+    <li>
+      
+      <%= error %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+<% end %>
+
+<%= t.label :content, 'タスク' %>
+
+<%= t.text_field :content %>
+
+<%= t.select :status, [["未着手", "未着手"], ["完了", "完了"]], :prompt => "選択してください" %>
+
+<%= t.submit 'set' %>
+
+<% end %>

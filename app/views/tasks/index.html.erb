@@ -4,8 +4,11 @@
 <% @tasks.each do |task| %>
   
   <li>
-<%= link_to task.id, task %>
-<%= task.content %>
+<%#= link_to task.id, task %>
+<%= link_to task.content, task %>
+status: <%= task.status %>
+
+<%#= link_to "削除", {:controller => "tasks", :action => "destroy", :id => task.id}, {:method => 'delete'} %>
 
   </li>
   
