@@ -1,8 +1,10 @@
+
+
 <%= form_for(task) do |t| %>
 
 <% if task.errors.any? %>
 
-<div id="error_explanation">
+<div class="alert alert-warning">
   <ul>
     <% task.errors.full_messages.each do |error| %>
     <li>
@@ -15,12 +17,32 @@
 
 <% end %>
 
+  <div class="row">
+    <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+     
+<!-- 
+col-xs-*	col-sm-*	col-md-*	col-lg-*
+〜767px	768〜991px	992〜1199px	1200px〜
+----
+767px以下(xs) では、12カラム（最大）で表示
+768px (sm) 以上では、 offset として2カラム追加して、8カラムで表示
+ただし1200px以上 (lg) の場合は、offset として3カラム追加して、6カラム（半分）で表示　
+-->
+
+<div class="form-group">
 <%= t.label :content, 'タスク' %>
+<%= t.text_field :content, class: 'form-control'%>
+</div>
 
-<%= t.text_field :content %>
+<div class="form-group">
+<%= t.label :status, 'ステータス' %>
+<%= t.select :status, [["未着手", "未着手"], ["完了", "完了"]], :prompt => "選択してください", class: 'form-control' %>
+</div>
 
-<%= t.select :status, [["未着手", "未着手"], ["完了", "完了"]], :prompt => "選択してください" %>
-
-<%= t.submit 'set' %>
+<%= t.submit 'set', class: 'btn btn-primary' %>
 
 <% end %>
+
+    </div>
+  </div>
+  

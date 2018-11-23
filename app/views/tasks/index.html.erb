@@ -1,19 +1,35 @@
 <h1>Task List</h1>
 
-<ul>
+<% if @tasks.any? %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>タスク</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
 <% @tasks.each do |task| %>
-  
-  <li>
-<%#= link_to task.id, task %>
+  <tr>
+    <td>
 <%= link_to task.content, task %>
-status: <%= task.status %>
-
-<%#= link_to "削除", {:controller => "tasks", :action => "destroy", :id => task.id}, {:method => 'delete'} %>
-
-  </li>
-  
+    </td>
+    <td>
+<%= task.status %>      
+    </td>
+  </tr>
 <% end %>
-  
-</ul>
 
-<%= link_to 'new task', new_task_path %>
+  </tbody>
+</table>
+
+<div>
+  
+<%= paginate @tasks %>
+
+</div>
+
+<% end %>
+
+<%= link_to 'new task', new_task_path, class: "btn btn-primary" %>
