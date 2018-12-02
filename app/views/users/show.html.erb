@@ -4,3 +4,4 @@
 <h1>USER: <%= @user.id %>の情報</h1>
 <p><%= @user.name %></p>
 <%= mail_to 'mail', @user.email %>
+<%= render 'tasks/tasks', tasks: @tasks %>

@@ -1,7 +1,9 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <h1>Register</h1>
+    <p>フォームに入力してください。</p>
 
-<%= form_for(@user) do |f| %>
+    <%= form_for(@user) do |f| %>
 
 <div class="form_group">
   <%= f.label :name, 'name' %>
@@ -19,6 +21,10 @@
   <%= f.label :password_confirmation, 'confirmation' %>
   <%= f.text_field :password_confirmation, class: 'form-control' %>
 </div>
+
 <%= f.submit 'sign up!', class: 'btn btn-primary btn-block' %>
 
 <% end %>
+  </div>
+</div>
+
